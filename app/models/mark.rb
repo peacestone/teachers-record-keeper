@@ -1,4 +1,4 @@
 class Mark < ActiveRecord::Base
-  belong_to :student
-  belong_to :test
+  belongs_to :student
+  belongs_to :test
 end
