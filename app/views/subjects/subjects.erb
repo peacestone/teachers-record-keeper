@@ -3,7 +3,9 @@
   Create a subject: <input type="text" name="subject[name]" value=""> <input type="submit"  value="Create Subject">
 </form>
 
-<h4>Select a subject that you teach</h4>
+<h4>Or click on a subject that you teach</h4>
 <%@subjects.each do |subject| %>
-  <a href="/subjects/<%=subject.id%>"><%=subject.name%></a><br><br>
+<p>
+  <a href="/subjects/<%=subject.id%>"><%=subject.name%></a>
+</p>
 <%end%>

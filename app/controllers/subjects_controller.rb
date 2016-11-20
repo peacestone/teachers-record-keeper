@@ -1,8 +1,12 @@
 class SubjectsController < ApplicationController
 
   get "/subjects" do
-    @subjects = current_teacher.subjects
-    erb :"subjects/subjects"
+    if logged_in?
+      @subjects = Subject.all
+      erb :"subjects/subjects"
+    else
+      redirect "/"
+    end
   end
 
   post "/subjects/new" do
@@ -13,5 +17,16 @@ class SubjectsController < ApplicationController
     end
     redirect "/subjects"
   end
+
+  get "/subjects/:id" do
+    @subject = Subject.find_by(id: params[:id])
+    if @subject
+      @tests = current_teacher.tests
+      erb :"subjects/show_subject"
+    else
+      redirect "/subjects"
+    end
+  end
+
 
 end
