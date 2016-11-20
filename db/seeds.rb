@@ -10,7 +10,17 @@ student1 = Student.create(first_name: "Bryan", last_name: "jones", dob: 220600)
 student2 = Student.create(first_name: "Ron", last_name: "emmerman", dob: 110402)
 
 mark1 = Mark.create(mark: "99%")
-mark1 = Mark.create(mark: "85%")
+mark2 = Mark.create(mark: "85%")
 
 test1 = Test.create(date: 220315, name: "Histroy of China")
-test1 = Test.create(date: 220111, name: "Test on Math, pages 22 - 26")
+test2 = Test.create(date: 220111, name: "Test on Math, pages 22 - 26")
+
+
+teacher2.subjects << subject2
+subject2.tests << test2
+test2.marks << mark1
+test2.marks << mark2
+
+student1.marks << mark1
+student1.marks << mark2
+student2.marks << mark2
