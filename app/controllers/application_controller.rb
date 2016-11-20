@@ -31,9 +31,20 @@ class ApplicationController < Sinatra::Base
   post "/signup" do
     if !params[:name].empty? && !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
       @teacher = Teacher.create(params)
+      session[:id] = @teacher.id
       redirect "/subjects"
     else
       redirect "/signup"
+    end
+  end
+
+  helpers do
+    def current_teacher
+      Teacher.find_by(id: session[:id])
+    end
+
+    def logged_in?
+      !!session[:id]
     end
   end
 
