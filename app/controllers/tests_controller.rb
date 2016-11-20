@@ -12,11 +12,9 @@ class TestController < ApplicationController
   post "/tests" do
     @test = Test.create(params)
     current_teacher.tests << @test
-    if
+
     redirect "/tests/<%=@test.id%>"
   end
-
-
 
 
 end
