@@ -1,11 +1,13 @@
 <h1>Update your profile</h1>
 
 <h3>Personal info</h3>
-<form class="" action="index.html" method="post">
-  <label>Name:</label><input type="text" name="name" value="<%=@teacher.name%>">
-  <label>Username:</label><input type="text" name="username" value="<%=@teacher.username%>">
-  <label>email:</label><input type="text" name="email" value="<%=@teacher.email%>">
-    <label>Password: </label><input type="text" name="password" value="<%=@teacher.password%>">
+<form class="" action="/teachers/<%=@teacher.id%>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+
+  <label>Name:</label><input type="text" name="teacher[name]" value="<%=@teacher.name%>">
+  <label>Username:</label><input type="text" name="teacher[username]" value="<%=@teacher.username%>">
+  <label>email:</label><input type="text" name="[teacher]email" value="<%=@teacher.email%>">
+    <label>Password: </label><input type="text" name="[teacher]password" value="<%=@teacher.password%>">
 
   <h3>Subjects that you teach</h3>
   <%@subjects.each do |subject| %>
@@ -15,5 +17,6 @@
   <h3>Students that you teach</h3>
   <%@students.each do |student| %>
   <input type="checkbox" <%= 'checked' if @teacher.students.include?(student)%> name="students[student_ids][]" value="<%=student.id%>"><%="#{student.first_name} #{student.last_name}"%></input>
-  <%end%>
+  <%end%><br><br>
+  <input type="submit"  value="Update Profile">
 </form>
