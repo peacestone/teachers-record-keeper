@@ -1,0 +1,4 @@
+class TeacherController < ApplicationController
+
+  
+end
