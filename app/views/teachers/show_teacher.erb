@@ -1,0 +1,10 @@
+<h1>Welcome <%=@teacher.name%></h1> <br><a href="/teachers/<%=@teacher.id%>/edit">Update your Profile</a>
+
+<h4>click on a subject that you teach</h4>
+<%@subjects.each do |subject| %>
+<p>
+  <a href="/subjects/<%=subject.id%>"><%=subject.name%></a>
+</p>
+<%end%>
+
+<h3>Students that you teach</h3>
