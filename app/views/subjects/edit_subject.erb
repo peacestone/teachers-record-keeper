@@ -1,0 +1,7 @@
+
+
+
+<h3>Students that you teach</h3>
+<%@students.each do |student| %>
+<input type="checkbox" <%= 'checked' if @teacher.students.include?(student)%> name="students[student_ids][]" value="<%=student.id%>"><%="#{student.first_name} #{student.last_name}"%></input>
+<%end%>

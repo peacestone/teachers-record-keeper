@@ -14,7 +14,19 @@ class TeacherController < ApplicationController
   end
 
   patch "/teachers/:id" do
-    "awesome"
-    binding.pry
+    #binding.pry
+    @teacher = Teacher.find_by(id: params[:id])
+    @teacher.update(params[:teacher])
+    
+    params[:subjects][:subject_ids].each do |id|
+      @teacher.subjects << Subject.find_by(id: id)
+    end
+
+    @teacher.subjects << Subject.create(params[:new_subject]) if !params[:new_subject].empty?
+
+    @teacher.save
+
+    redirect "/teachers/#{@teacher.id}"
+
   end
 end
