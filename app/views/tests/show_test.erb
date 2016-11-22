@@ -1,3 +1,12 @@
 <h1><%=@test.name%></h1>
 <h2>Date: <%=@test.date%></h2>
 <h2>subject: <a href="/subjects/<%=@test.subject.id%>"><%=@test.subject.name%></a> </h2>
+
+<h4><a href="/tests/<%=@test.id%>/marks/new">Add a mark</a></h4>
+
+
+<%if @marks%>
+  <%@marks.each do |mark| %>
+    <h3><%="#{mark.student}: #{mark.mark}"%></h3>
+  <%end%>
+<%end%>

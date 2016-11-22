@@ -1,0 +1,13 @@
+<h1>Add a mark for <%=@test.name%></h1>
+
+<form class="" action="/tests/<%=@test.id%>/marks" method="post">
+  Mark: %<input type="text" name="mark" value="">
+  Select a student for this mark:
+  <%@test.students.each do |student| %>
+    <input type="radio" name="student_id" value="<%student.id%>"><%="#{student.first_name} #{student.last_name}"%>
+    <%end%>
+    <br><br>
+    <input type="submit"  value="">
+
+
+</form>

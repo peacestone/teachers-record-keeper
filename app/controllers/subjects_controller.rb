@@ -35,6 +35,13 @@ class SubjectsController < ApplicationController
     @test = Test.create(params[:test])
     #binding.pry
     @subject.tests << @test
+
+    #add this subjects test to all the students of this subject
+    #@subject.students.each do |student|
+      #student.tests << @test
+      #student.save
+
+
     @subject.save
     redirect "/subjects/#{@subject.id}"
   end
@@ -43,8 +50,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.find_by(id: params[:id])
     @student = Student.create(params[:student])
     @subject.students << @student
-    binding.pry
-    redirect "/subjects"
+    redirect "/subjects/#{@subject.id}"
   end
 
 
