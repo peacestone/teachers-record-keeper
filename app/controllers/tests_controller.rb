@@ -1,6 +1,7 @@
 class TestController < ApplicationController
 
   get "/tests" do
+    binding.pry
     @tests = current_teacher.tests
     erb :"tests/tests"
   end
@@ -15,6 +16,12 @@ class TestController < ApplicationController
     current_teacher.tests << @test
 
     redirect "/tests/<%=@test.id%>"
+  end
+
+  get "/tests/:id" do
+    @test = Test.find_by(id: params[:id])
+
+    erb :"tests/show_test"
   end
 
 

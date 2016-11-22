@@ -21,13 +21,14 @@ class SubjectsController < ApplicationController
   get "/subjects/:id" do
     @subject = Subject.find_by(id: params[:id])
     if @subject
-      
+
       erb :"subjects/show_subject"
     else
       redirect "/subjects"
     end
   end
 
+  
   post "/subjects/:id/tests" do
     @subject = Subject.find_by(id: params[:id])
     @test = Test.create(params[:test])
