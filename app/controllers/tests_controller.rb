@@ -10,6 +10,7 @@ class TestController < ApplicationController
   end
 
   post "/tests" do
+    binding.pry
     @test = Test.create(params)
     current_teacher.tests << @test
 

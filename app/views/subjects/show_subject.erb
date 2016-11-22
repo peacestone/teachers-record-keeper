@@ -1,11 +1,21 @@
 <h1><%=@subject.name%></h1>
 
-<h3><a href="/tests/new">Create a Test</a></h3>
+<h3>Add a New Test for this subject</h3>
+<div class="">
 
-<h3>List of tests</h3>
+  <form class="" action="/subjects/<%=@subject.id%>/tests" method="post">
+    <label>Name of test: <input type="text" name="test[name]" value=""></label> <label>Date of test:</label> <input type="text" name="test[date]" value="">
+    <input type="submit" value="Add Test">
+  </form>
+  <h3>List of tests</h3>
 
-<%@tests.each do |test| %>
+  <%@subject.tests.each do |test| %>
 
-  <h4><a href="/tests/<%=test.id%>"><%=test.name%></a></h4>
-  <br> Date of test: <%=test.date%>
-<%end%>
+    <h4><a href="/tests/<%=test.id%>"><%=test.name%></a></h4>
+    <br> Date of test: <%=test.date%>
+  <%end%>
+
+</div>
+<div class="">
+  <h3>  list of Students</h3>
+</div>
