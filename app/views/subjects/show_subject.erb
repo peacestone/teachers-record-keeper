@@ -1,8 +1,9 @@
-<h1><%=@subject.name%></h1>
 
-<h3>Add a New Test for this subject</h3>
+
+
 <div class="">
-
+  <h1><%=@subject.name%></h1>
+  <h3>Add a Test for this subject</h3>
   <form class="" action="/subjects/<%=@subject.id%>/tests" method="post">
     <label>Name of test: <input type="text" name="test[name]" value=""></label> <label>Date of test:</label> <input type="text" name="test[date]" value="">
     <input type="submit" value="Add Test">
@@ -17,5 +18,17 @@
 
 </div>
 <div class="">
+  <h3>Add a Student for this subject</h3>
+  <form class="" action="/subjects/<%=@subject.id%>/students" method="post">
+    Student First Name: <input type="text" name="student[first_name]" value="">
+    Student Last Name: <input type="text" name="student[last_name]" value=""><br><br>
+    Student Date of birth: <input type="text" name="student[dob]" value=""><br><br>
+    <input type="submit"  value="Add Student">
+
+
+  </form>
   <h3>  list of Students</h3>
+  <%@students.each do |student| %>
+  <h4><a href="#"><%="#{student.first_name} #{student.last_name}"%></a></h4>
+  <%end%>
 </div>

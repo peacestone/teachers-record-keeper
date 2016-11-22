@@ -21,6 +21,7 @@ class SubjectsController < ApplicationController
   get "/subjects/:id" do
     @subject = Subject.find_by(id: params[:id])
     if @subject
+      @students = @subject.students
 
       erb :"subjects/show_subject"
     else
@@ -28,7 +29,7 @@ class SubjectsController < ApplicationController
     end
   end
 
-  
+
   post "/subjects/:id/tests" do
     @subject = Subject.find_by(id: params[:id])
     @test = Test.create(params[:test])
@@ -36,6 +37,14 @@ class SubjectsController < ApplicationController
     @subject.tests << @test
     @subject.save
     redirect "/subjects/#{@subject.id}"
+  end
+
+  post "/subjects/:id/students" do
+    @subject = Subject.find_by(id: params[:id])
+    @student = Student.create(params[:student])
+    @subject.students << @student
+    binding.pry
+    redirect "/subjects"
   end
 
 
